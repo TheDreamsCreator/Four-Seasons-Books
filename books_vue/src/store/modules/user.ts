@@ -5,12 +5,13 @@ import Storage from "../../utils/Storage";
 import jwt_decode from "jwt-decode";
 
 interface UserInfo {
+  id: number
   nickname?: string;
   age?: number;
-  email?: string;
-  cellphone?: string;
-  account?: string;
-  role?: string;
+  email: string;
+  cellphone: string;
+  account: string;
+  role: string;
 }
 
 interface UserState {
@@ -54,8 +55,9 @@ export const useUserStore = defineStore({
         const { data } = await login(params);
         const decoded: API.TokenData = jwt_decode(data.data);
         if (data.data != null) {
-          const { nickname, age, email, cellphone, account, role } = decoded;
+          const { id, nickname, age, email, cellphone, account, role } = decoded;
           this.setUserInfo({
+            id,
             nickname,
             age,
             email,

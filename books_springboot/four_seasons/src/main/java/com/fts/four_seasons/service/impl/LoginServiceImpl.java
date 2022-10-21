@@ -42,6 +42,7 @@ public class LoginServiceImpl implements LoginService {
     String role = ObjectUtil.isNotEmpty(authority) ? authority.getName() : AuthorityConst.NICK.getName();
 
     TokenSubject subject = TokenSubject.builder()
+        .id(user.getId())
         .account(user.getAccount())
         .age(user.getAge())
         .cellphone(user.getCellphone())

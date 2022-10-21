@@ -39,6 +39,9 @@
           <if test="condition.publisher != null">
             and publisher like concat('%', #{condition.publisher}, '%')
           </if>
+          <if test="condition.isBorrow != null">
+            and is_borrow = #{condition.isBorrow}
+          </if>
         </where>
       ) as b
     JOIN type as t ON b.type = t.id

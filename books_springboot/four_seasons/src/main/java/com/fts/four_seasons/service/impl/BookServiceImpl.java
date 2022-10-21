@@ -9,7 +9,6 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.fts.four_seasons.exception.ApiException;
 import com.fts.four_seasons.mapper.BookMapper;
 import com.fts.four_seasons.mapper.TypeMapper;
-import com.fts.four_seasons.model.dto.BookDeleteDto;
 import com.fts.four_seasons.model.dto.BookUpdateDto;
 import com.fts.four_seasons.model.dto.NewBookDto;
 import com.fts.four_seasons.model.dto.QueryBookDto;
@@ -38,7 +37,6 @@ public class BookServiceImpl implements BookService {
     int offset = (dto.getPage() != null && limit != 0 && dto.getPage() > 0)
         ? dto.getLimit() * (dto.getPage() - 1)
         : 0;
-
     // there would be query all rows if limit and offset equals 0
     List<BookVo> result = bookMapper.listBooks(dto, limit, offset);
     return result;

@@ -12,6 +12,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class TokenSubject {
+  private Integer id;
   private String nickname;
   private String account;
   private String role;

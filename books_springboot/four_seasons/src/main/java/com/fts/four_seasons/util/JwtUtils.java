@@ -32,6 +32,7 @@ public class JwtUtils {
     Date expireDate = calendar.getTime();
 
     String token = JWT.create()
+        .setPayload("id", subject.getId())
         .setPayload("account", subject.getAccount())
         .setPayload("role", subject.getRole())
         .setPayload("age", subject.getAge())
@@ -51,6 +52,7 @@ public class JwtUtils {
    */
   public static TokenSubject parseToken(String token) {
     JWT jwt = JWT.of(token);
+    Integer id = (Integer) jwt.getPayload("id");
     String account = (String) jwt.getPayload("account");
     String role = (String) jwt.getPayload("role");
     Integer age = (Integer) jwt.getPayload("age");
@@ -58,6 +60,7 @@ public class JwtUtils {
     String email = (String) jwt.getPayload("email");
     String nickname = (String) jwt.getPayload("nickname");
     return TokenSubject.builder()
+        .id(id)
         .account(account)
         .role(role)
         .age(age)

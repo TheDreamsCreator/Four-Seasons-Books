@@ -21,6 +21,7 @@ declare namespace API {
   }
   
   type TokenData = {
+    id: number;
     account: string;
     nickname: string;
     age: number;

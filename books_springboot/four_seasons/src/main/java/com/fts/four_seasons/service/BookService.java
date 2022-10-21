@@ -2,7 +2,6 @@ package com.fts.four_seasons.service;
 
 import java.util.List;
 
-import com.fts.four_seasons.model.dto.BookDeleteDto;
 import com.fts.four_seasons.model.dto.BookUpdateDto;
 import com.fts.four_seasons.model.dto.NewBookDto;
 import com.fts.four_seasons.model.dto.QueryBookDto;

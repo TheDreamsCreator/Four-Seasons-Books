@@ -2,127 +2,85 @@
   <n-space vertical :size="12">
     <n-data-table :bordered="false" :columns="columns" :data="data" :pagination="pagination" :row-key="rowKey"
       @update:checked-row-keys="handleCheck" :theme-overrides="{ borderRadius: '1rem' }" />
-    <n-button style="background-color: #f74d4e; --n-border: 0; margin-left: 10rem;width: 1.05rem;" type="info">归还
-    </n-button>
+    <n-modal v-model:show="showConfirm" preset="dialog" title="归还" content="是否归还此书?" positive-text="确认"
+      negative-text="取消" @positive-click="submit" @negative-click="cancel" />
   </n-space>
 </template>
 
 <script setup lang="ts">
-import { DataTableColumns, DataTableRowKey } from 'naive-ui';
-import { reactive, ref } from 'vue';
-const bookData = ref<API.BookData[]>([
-  {
-    id: 0,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 1,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 0,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 1,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 0,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 1,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 0,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 1,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 0,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 1,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
+import { DataTableColumns, DataTableRowKey, NButton, useMessage } from 'naive-ui';
+import { reactive, ref, h, onMounted } from 'vue';
+import { getBorrowList, returnBook } from '../../api/book';
+import { useUserStore } from '../../store/modules/user';
+const userStore = useUserStore();
+const $message = useMessage();
+
+const getBorrowBook = async () => {
+  const { data } = await getBorrowList({
+    user_id: userStore.getUserInfo.id
+  })
+  if (data.status === 1) {
+    $message.error(data.message)
+    return
   }
-] as API.BookData[])
-const createColumns = (): DataTableColumns<API.BookData> => {
+  bookData.value = data.data
+  $message.success(data.message)
+}
+
+onMounted(async () => {
+  await getBorrowBook()
+})
+
+const bookData = ref<API.BorrowDataSelf[]>([] as API.BorrowDataSelf[])
+const createColumns = (): DataTableColumns<API.BorrowDataSelf> => {
   return [
     {
       type: 'selection',
-      disabled(row: API.BookData) {
-        return row.bookname === ''
+      disabled(row: API.BorrowDataSelf) {
+        return row.book_name === ''
       }
     },
     {
       title: 'ISBN',
-      key: 'isbn'
+      key: 'book_isbn'
     },
     {
       title: '书名',
-      key: 'bookname'
+      key: 'book_name'
     },
     {
       title: '作者',
-      key: 'author'
+      key: 'book_author'
     },
     {
       title: '出版社',
-      key: 'publisher'
+      key: 'book_publisher'
     },
     {
       title: '类别',
-      key: 'type'
+      key: 'type_name'
+    },
+    {
+      title: '借阅时间',
+      key: 'borrow_time'
+    },
+    {
+      title: '',
+      key: 'rent',
+      render(row) {
+        return h(
+          NButton,
+          {
+            onClick: () => bookReturn(row)
+          },
+          {
+            default: () => '归还'
+          }
+        )
+      }
     }
   ]
 }
-
 const createData = () => {
   return bookData
 }
@@ -150,4 +108,32 @@ const handleCheck = (rowKeys: DataTableRowKey[]) => {
 const data = ref(createData())
 const columns = ref(createColumns())
 const pagination = ref(paginationReactive)
+
+/* 归还模态框 */
+const showConfirm = ref(false)
+const book_id = ref(0)
+const bookReturn = (row: any) => {
+  showConfirm.value = true
+  book_id.value = row.book_id
+}
+const submit = async () => {
+  try {
+    const { data } = await returnBook({
+      user_id: userStore.getUserInfo.id,
+      book_id: book_id.value,
+    })
+    if (data.status === 0) {
+      $message.success(data.message)
+    } else {
+      $message.error(data.message)
+    }
+    showConfirm.value = false
+    await getBorrowBook()
+  } catch (e: any) {
+    $message.error(e.message)
+  }
+}
+const cancel = () => {
+  showConfirm.value = false
+}
 </script>
