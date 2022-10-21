@@ -1,0 +1,273 @@
+input {
+  padding-left: 0.11764706rem;
+  border: none;
+  outline: none;
+}
+input:focus {
+  background-color: rgba(208, 202, 202, 0.379);
+}
+p {
+  display: inline-block;
+}
+button {
+  border: none;
+}
+a {
+  text-decoration: none;
+  color: #cb2b2b;
+}
+a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+.abtn {
+  margin-left: 0.17647059rem;
+  padding: 0 0.11764706rem;
+  border-radius: 0.05882353rem;
+  height: 0.41176471rem;
+  line-height: 0.41176471rem;
+  color: white;
+  background-color: #f74d4e;
+}
+.abtn:hover {
+  background-color: #cb2b2b;
+  color: #fff;
+}
+.box {
+  margin: 0.23529412rem auto;
+  width: 11.05882353rem;
+}
+.box .add_book {
+  width: 100%;
+  /* background-color: pink; */
+}
+.box .add_book .add_nav {
+  display: block;
+  padding: 0 0.23529412rem;
+  height: 0.47058824rem;
+  width: 100%;
+  background-color: #f74d4e;
+  line-height: 0.47058824rem;
+  font-size: 0.17647059rem;
+  font-weight: 500;
+  color: white;
+  letter-spacing: 0.02352941rem;
+  border-top-left-radius: 0.03529412rem;
+  border-top-right-radius: 0.03529412rem;
+}
+.box .add_book .add_action {
+  font-size: 0.17647059rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.23529412rem;
+  border: 0.02352941rem solid #f74d4e;
+  border-top: none;
+  border-bottom-left-radius: 0.05882353rem;
+  border-bottom-right-radius: 0.05882353rem;
+  height: 0.70588235rem;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.box .add_book .add_action span {
+  margin-right: 0.11764706rem;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border: 0.01176471rem solid #abababab;
+  border-radius: 0.03529412rem;
+  height: 0.41176471rem;
+  line-height: 0.41176471rem;
+}
+.box .add_book .add_action span p {
+  height: 100%;
+  padding: 0 0.09411765rem;
+  background-color: #cbcacaab;
+}
+.box .add_book .add_action span input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* flex: 1; */
+  /* background-color: pink; */
+}
+.box .add_book .add_action #retbtn {
+  margin-left: 0.21176471rem;
+}
+.box .book_list {
+  border: 0.01176471rem solid #d63d3dab;
+  border-radius: 0.05882353rem;
+  margin-top: 0.35294118rem;
+  font-size: 0.17647059rem;
+  overflow: hidden;
+}
+.box .book_list table {
+  width: 100%;
+  text-align: center;
+}
+.box .book_list table tr {
+  display: flex;
+  height: 0.47058824rem;
+  line-height: 0.47058824rem;
+  width: 9.29411765rem;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.box .book_list table tr th,
+.box .book_list table tr td {
+  flex: 1;
+  text-align: center;
+}
+.box .book_list table tr th:first-child,
+.box .book_list table tr th:last-child,
+.box .book_list table tr th:nth-child(3),
+.box .book_list table tr td:first-child,
+.box .book_list table tr td:last-child,
+.box .book_list table tr td:nth-child(3) {
+  flex: none;
+  width: 1.17647059rem;
+}
+.box .book_list table thead {
+  width: 100%;
+  background-color: #f74d4db7;
+  height: 0.47058824rem;
+  border-bottom: 0.01176471rem solid #abababab;
+  color: #fff;
+}
+.box .book_list table thead tr {
+  width: 100%;
+  display: flex;
+  flex: none;
+  background-color: transparent;
+}
+.box .book_list table tbody {
+  overflow: hidden;
+}
+.box .book_list table tbody tr {
+  width: 100%;
+  border-bottom: 0.01176471rem solid #abababab;
+}
+.box .book_list table tbody tr td {
+  overflow: hidden;
+  border-right: 0.01176471rem solid #abababab;
+}
+.box .book_list table tbody tr td input {
+  float: left;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  color: #828282;
+}
+.box .book_list table tbody tr:hover {
+  background-color: rgba(195, 184, 184, 0.6);
+}
+.box .book_list table tbody tr:last-child {
+  border-bottom: none;
+}
+.box .select_page {
+  margin-top: 0.17647059rem;
+  height: 0.4rem;
+  position: relative;
+  color: #fff;
+}
+.box .select_page .page_center {
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 0.4rem;
+  line-height: 0.47058824rem;
+}
+.box .select_page .page_center .addPage {
+  float: left;
+  display: inline-block;
+  overflow: hidden;
+}
+.box .select_page .page_center .addPage li {
+  font-size: 0.17647059rem;
+  margin: 0 0.05882353rem;
+  float: left;
+  height: 0.4rem;
+  width: 0.52941176rem;
+  list-style: none;
+  border: 0.01176471rem solid #abababab;
+  border-radius: 0.03529412rem;
+  background-color: #ebe4e4;
+  line-height: 0.38823529rem;
+  text-align: center;
+}
+.box .select_page .page_center .addPage li a {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+.box .select_page .page_center .addPage li a {
+  color: #444;
+}
+.box .select_page .page_center .addPage li:first-child {
+  margin-right: 0;
+}
+.box .select_page .page_center .addPage li:last-child {
+  margin-left: 0;
+}
+.box .select_page .page_center .addPage .sele {
+  margin: 0 0.05882353rem;
+  float: left;
+  background-color: #cbcacaab;
+  outline: none;
+  border-radius: 0.03529412rem;
+  height: 0.4rem;
+  border: none;
+  color: #444;
+}
+.box .select_page .page_center .prePage {
+  float: left;
+}
+.box .select_page .page_center .prePage,
+.box .select_page .page_center .nextPage {
+  font-size: 0.17647059rem;
+  display: inline-block;
+  height: 0.38823529rem;
+  width: 0.52941176rem;
+  line-height: 0.38823529rem;
+  text-align: center;
+  background-color: #f74d4e;
+  color: #fff;
+  border-radius: 0.03529412rem;
+}
+.box .select_page .page_center .nextPage {
+  float: right;
+}
+.box .select_page .page_center .prePage:hover,
+.box .select_page .page_center .nextPage:hover {
+  background-color: #cb2b2b;
+}
+.box .save_box {
+  position: fixed;
+  bottom: 50%;
+  right: 0.47058824rem;
+  width: 3.05882353rem;
+  background-color: rgba(255, 255, 255, 0.499);
+  box-shadow: 0rem 0rem 0.11764706rem #abababab;
+}
+.box .save_box #save {
+  display: inline-block;
+  margin: 0.23529412rem 0.35294118rem;
+  height: 0.52941176rem;
+  width: 2.35294118rem;
+  line-height: 0.52941176rem;
+  text-align: center;
+  font-size: 0.23529412rem;
+}
+.box .save_box .save_mag {
+  height: 0.58823529rem;
+  width: 100%;
+  text-align: center;
+  line-height: 0.58823529rem;
+}
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+.del:hover {
+  color: #3f9dc2;
+}

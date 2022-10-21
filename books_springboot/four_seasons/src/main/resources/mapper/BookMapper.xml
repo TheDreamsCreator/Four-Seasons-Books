@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fts.four_seasons.mapper.BookMapper">
+  <resultMap id="bookResultMap" type="com.fts.four_seasons.model.vo.BookVo">
+    <id column="id" property="id" />
+    <result column="bookname" property="bookname" />
+    <result column="author" property="author" />
+    <result column="publisher" property="publisher" />
+    <result column="isbn" property="isbn" />
+    <result column="type_id" property="typeId" />
+    <result column="type" property="type" />
+    <result column="is_del" property="isDel" />
+  </resultMap>
+
+  <select id="listBooks" resultMap="bookResultMap">
+    SELECT
+      b.id,
+      b.name as bookname,
+      b.publisher,
+      b.isbn,
+      b.author,
+      b.is_del,
+      t.id as type_id,
+      t.name as type
+    FROM 
+      (
+        SELECT
+          name, isbn, id, author, type, publisher, is_del
+        FROM
+          book
+        <where>
+          is_del = 0
+          <if test="condition.bookname != null">
+            and name like concat('%', #{condition.bookname}, '%')
+          </if>
+          <if test="condition.author != null">
+            and author like concat('%', #{condition.author}, '%')
+          </if>
+          <if test="condition.publisher != null">
+            and publisher like concat('%', #{condition.publisher}, '%')
+          </if>
+        </where>
+      ) as b
+    JOIN type as t ON b.type = t.id
+    <if test="limit != 0">
+      LIMIT #{limit}
+    </if>
+    <if test="offset != 0">
+      OFFSET #{offset}
+    </if>
+  </select>
+</mapper>

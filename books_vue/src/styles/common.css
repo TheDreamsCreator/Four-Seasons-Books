@@ -1,0 +1,61 @@
+/* 页面元素rem 计算公式：元素  / html字体大小(50) */
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 85px;
+}
+body {
+  width: 15rem;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F2F2F2;
+  color: #333;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none!important;
+  color: #333;
+}
+a:hover {
+  color: #f74d4e;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+.w {
+  width: 15rem;
+  margin: auto;
+}
+/* ======flex 垂直居中 水平居中 center_VH 给父亲及、加======*/
+.center_VH {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center_V {
+  display: flex;
+  align-items: center;
+}
+.center_H {
+  display: flex;
+  justify-content: center;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 0.18823529rem;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

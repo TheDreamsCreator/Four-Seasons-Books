@@ -1,0 +1,284 @@
+@font-face {
+  font-family: "icomoon";
+  src: url("../assets/fonts/icomoon.eot?b5uopg");
+  src: url("../assets/fonts/icomoon.eot?b5uopg#iefix") format("embedded-opentype"),
+    url("../assets/fonts/icomoon.ttf?b5uopg") format("truetype"),
+    url("../assets/fonts/icomoon.woff?b5uopg") format("woff"),
+    url("../assets/fonts/icomoon.svg?b5uopg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+/* 页面元素rem 计算公式：元素  / html字体大小(50) */
+/* 引入common.css样式 */
+/* 页面元素rem 计算公式：元素  / html字体大小(50) */
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 85px;
+}
+body {
+  width: 15rem;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none !important;
+  color: #333;
+}
+a:hover {
+  color: #f74d4e;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+.w {
+  width: 15rem;
+  margin: auto;
+}
+/* ======flex 垂直居中 水平居中 center_VH 给父亲及、加======*/
+.center_VH {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center_V {
+  display: flex;
+  align-items: center;
+}
+.center_H {
+  display: flex;
+  justify-content: center;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 0.18823529rem;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* header部分 */
+.header {
+  z-index: 999;
+  height: 0.82352941rem;
+  width: 15rem;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.632);
+}
+.header .w {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.header .w .logo {
+  position: relative;
+  float: left;
+  height: 0.47058824rem;
+}
+.header .w .logo img {
+  position: absolute;
+  width: 0.52941176rem;
+  left: 0.23529412rem;
+}
+.header .w .search {
+  position: absolute;
+  float: left;
+  width: 4.84705882rem;
+  height: 0.49411765rem;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  background-color: #fff;
+  background-color: #f74d4e;
+}
+.header .w .search input {
+  float: left;
+  width: 4.05882353rem;
+  height: 100%;
+  border: 0.01176471rem solid #f74d4e;
+  border-right: none;
+  color: #333;
+  font-size: 0.16470588rem;
+  padding-left: 0.17647059rem;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.header .w .search button {
+  float: right;
+  width: 0.78823529rem;
+  height: 100%;
+  border: 0;
+  background: #f74d4e;
+}
+.header .w .user {
+  position: absolute;
+  right: 0.23529412rem;
+  line-height: 0.49411765rem;
+  font-size: 0.16470588rem;
+  color: #666666;
+  cursor: pointer;
+}
+.header .w .user img {
+  vertical-align: middle;
+  margin-right: 0.09411765rem;
+  width: 0.52941176rem;
+}
+/* banner区域 */
+.banner {
+  position: relative;
+  height: 8.11764706rem;
+  overflow: hidden;
+}
+.banner .w {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+.banner .w .subnav {
+  float: left;
+  width: 2.23529412rem;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.banner .w .subnav ul li {
+  box-sizing: border-box;
+  height: 0.52941176rem;
+  padding: 0 0.29411765rem;
+  border-bottom: 0.01176471rem solid #c0bcb9;
+  overflow: hidden;
+}
+.banner .w .subnav ul li a {
+  float: left;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  line-height: 0.52941176rem;
+  font-size: 0.16470588rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+.banner .w .subnav ul li a span {
+  float: right;
+}
+.banner .w .subnav ul li a:hover {
+  color: #f74d4e;
+}
+.banner .w .subnav li:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.banner .w #content {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 12.76470588rem;
+}
+.banner .w #content .welcome {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  width: 500px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Lucida Calligraphy;
+  transform: translateX(-50%) scale(1.5);
+}
+.banner .w #content .welcome p {
+  display: block;
+}
+.banner .w #content .welcome .middle {
+  margin: 0 170px;
+}
+.banner .w #content #search-table .book_list table tr th,
+.banner .w #content #searchLike-table .book_list table tr th,
+.banner .w #content #search-table .book_list table tr td,
+.banner .w #content #searchLike-table .book_list table tr td {
+  flex: 1;
+  text-align: center;
+}
+.banner .w #content #search-table .book_list table tr th:first-child,
+.banner .w #content #searchLike-table .book_list table tr th:first-child,
+.banner .w #content #search-table .book_list table tr th:last-child,
+.banner .w #content #searchLike-table .book_list table tr th:last-child,
+.banner .w #content #search-table .book_list table tr th:nth-child(3),
+.banner .w #content #searchLike-table .book_list table tr th:nth-child(3),
+.banner .w #content #search-table .book_list table tr td:first-child,
+.banner .w #content #searchLike-table .book_list table tr td:first-child,
+.banner .w #content #search-table .book_list table tr td:last-child,
+.banner .w #content #searchLike-table .book_list table tr td:last-child,
+.banner .w #content #search-table .book_list table tr td:nth-child(3),
+.banner .w #content #searchLike-table .book_list table tr td:nth-child(3) {
+  flex: 1;
+}
+.banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: url("../assets/images/banner2.jpg") no-repeat;
+  background-size: 100% auto;
+  opacity: 0.5;
+  z-index: -8;
+}
+/* footer  */
+.footer {
+  height: 2.58823529rem;
+  background-color: #fff;
+  padding-top: 0.41176471rem;
+}
+.footer .w .copyright {
+  position: relative;
+  float: left;
+}
+.footer .w .copyright img {
+  position: absolute;
+  width: 0.52941176rem;
+  left: 0.23529412rem;
+}
+.footer .w .copyright p {
+  position: absolute;
+  left: 1.17647059rem;
+  width: 5.88235294rem;
+  font-size: 0.14117647rem;
+  color: #666666;
+  margin: 0.05882353rem 0;
+}
+.footer .w .links {
+  float: right;
+  height: 2.17647059rem;
+  font-size: 0.14117647rem;
+}
+.footer .w .links dl {
+  float: left;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-right: 0.58823529rem;
+  height: 100%;
+}
+.footer .w .links dl dt {
+  flex: 1.4;
+}
+.footer .w .links dl dd {
+  flex: 1;
+}

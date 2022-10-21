@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?b5uopg');
+    src:  url('../fonts/icomoon.eot?b5uopg#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?b5uopg') format('truetype'),
+      url('../fonts/icomoon.woff?b5uopg') format('woff'),
+      url('../fonts/icomoon.svg?b5uopg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+@basefont:85;
+@import "common";
+
+/* header部分 */
+.header {
+    z-index: 999;
+    height: (70rem / @basefont);
+    width: 100%;
+    margin: 0 auto;
+    // background-color: pink;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.632);
+    .w{
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        // background-color: skyblue;
+        .logo {
+            position: relative;
+            float: left;
+            height: (40rem /@basefont);
+            img{
+                position: absolute;
+                width: (45rem / @basefont);
+                left: (20rem / @basefont);
+            }
+        }
+        .search {
+            position: absolute;
+            float: left;
+            width: (412rem / @basefont);
+            height: (42rem / @basefont);
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            input {
+                float: left;
+                width: (345rem / @basefont);
+                height: 100%;
+                border: (1rem / @basefont) solid rgb(250,5,6);
+                border-right: none;
+                color: #333;
+                font-size: (14rem / @basefont);
+                padding-left: (15rem / @basefont);
+                outline: none;
+                box-sizing: border-box;
+            }
+            button {
+                float: left;
+                width: (50rem / @basefont);
+                height: (42rem / @basefont);
+                border: 0;
+                background: rgb(247,77,78);
+            }
+        }
+        .user {
+            position: absolute;
+            right: (20rem / @basefont);
+            line-height: (42rem / @basefont);
+            font-size: (14rem / @basefont);
+            color: #666666;
+            img {
+                vertical-align: middle;
+                margin-right: (8rem / @basefont);
+                width: (45rem / @basefont);
+            }
+        }
+    }
+    
+}
+
+
+/* banner区域 */
+.banner {
+    position: relative;
+    // top: (70rem / @basefont);
+    height: (550rem / @basefont);
+    // background-color: pink;
+    overflow: hidden;
+    .w {
+        height: 100%;
+        overflow: hidden;
+        .subnav {
+            float: left;
+            width: (190rem / @basefont);
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            ul li {
+                // background-color: red;
+                box-sizing: border-box;
+                height: (45rem / @basefont);
+                // line-height: (45rem / @basefont);
+                padding: 0 (25rem / @basefont);
+                border-bottom: (1rem / @basefont) solid rgb(192,188,185);
+                overflow: hidden;
+                a {
+                    float: left;
+                    display: inline-block;
+                    height: 100%;
+                    width: 100%;
+                    line-height: (45rem / @basefont);
+                    // background-color: skyblue;
+                    font-size: (14rem / @basefont);
+                    color: #fff;
+                    overflow: hidden;
+                    span {
+                        float: right;
+                        color: #fff;
+                    }
+                }
+                a:hover {
+                    color: rgb(247,77,78);
+                }
+            }
+            li:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+        #content {
+            position: absolute;
+            // background-color: rgba(255, 192, 203, 0.503);
+            right: 0;
+            height: 100%;
+            width: (15rem - (190rem / @basefont));
+        }
+    }
+}
+.banner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    // background: url(../images/banner2.jpg) no-repeat ;
+    background: url('../assets/images/banner2.jpg') no-repeat ;
+    background-size: 100% auto; 
+    // background-color: orange;
+    opacity: 0.5;
+    z-index: -8;
+}
+
+/* footer  */
+.footer {
+    height: (220rem / @basefont);
+    background-color: #fff;
+    padding-top: (35rem / @basefont);
+    .w {
+        .copyright {
+            position: relative;
+            float: left;
+            img{
+                position: absolute;
+                width: (45rem / @basefont);
+                left: (20rem / @basefont);
+            }
+            p {
+                position: absolute;
+                left: (100rem / @basefont);
+                width: (500rem / @basefont);
+                font-size: (12rem / @basefont);
+                color: #666666;
+                margin: (5rem / @basefont) 0;
+            }
+        }
+        .links {
+            float: right;
+            height: 100%;
+            font-size: (12rem / @basefont);
+            dl{
+                float: left;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: column;
+                margin-right: (50rem / @basefont);
+                height: (200rem / @basefont);
+                dt{
+                    flex:2;
+                }
+                dd {
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

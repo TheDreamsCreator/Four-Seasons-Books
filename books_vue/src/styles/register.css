@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
+
+input {
+    outline: none;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    min-height: 750px;
+    overflow: hidden;
+}
+
+body::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    height: 120%;
+    width: 120%;
+    background: url("../assets/images/login.jpeg") no-repeat;
+    background-size: 100% auto;
+    background-position: center center;
+    filter: blur(7px);
+}
+
+.main {
+    position: relative;
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%;
+    min-height: 750px;
+}
+
+.main .contain {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 520px;
+    width: 700px;
+    background: url("../assets/images/login.jpeg") no-repeat;
+    background-size: 700px 520px;
+    background-position: center center;
+    overflow: hidden;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.main .contain .left {
+    float: left;
+    padding-left: 60px;
+    width: 400px;
+    height: 100%;
+}
+
+.main .contain .left p {
+    margin-top: 95px;
+    margin-bottom: 275px;
+    font-size: 15.7px;
+    letter-spacing: 3px;
+    color: #e8dfdf;
+    border-bottom: 3px solid #fff;
+    width: 70px;
+    text-align: center;
+}
+
+.main .contain .left ul li {
+    margin-bottom: 24px;
+    font-size: 17px;
+    color: #e8dfdf;
+}
+
+.main .contain .left ul em {
+    display: block;
+    width: 205px;
+    color: #f8f0f0;
+    font-size: 10px;
+    text-shadow: 0px 0px 30px #000;
+}
+
+.main .contain .right {
+    position: absolute;
+    top: 0;
+    left: 350px;
+    width: 350px;
+    height: 100%;
+}
+
+.main .contain .right form {
+    position: absolute;
+    top: 25px;
+    margin: 40px;
+    /* background-color: rgb(25, 39, 95); */
+}
+
+.main .contain .right form .label {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.main .contain .right form ul {
+    position: relative;
+    color: #fff;
+    display: flex;
+    margin-bottom: 25px;
+    line-height: 26px;
+    font-size: .2rem !important
+}
+
+.main .contain .right form ul input {
+    flex: 1;
+    width: 202px;
+    height: 26px;
+    line-height: 26px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.main .contain .right form ul .long {
+    width: 190px;
+}
+
+.main .contain .right form ul span {
+    z-index: 999;
+    position: absolute;
+    right: 0;
+    bottom: -25px;
+    font-size: 10px;
+    color: #e5d7d7;
+    letter-spacing: 1px;
+}
+
+.main .contain .right form .spanT {
+    bottom: -15px;
+}
+
+.main .contain .right form .control_login {
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+.main .contain .right form .control_login .control {
+    display: inline-block;
+    width: 77px;
+    height: 33px;
+    text-align: center;
+    border-radius: 3px;
+    line-height: 33px;
+}
+
+.main .contain .right form .control_login .reg {
+    float: left;
+    background-color: #076d9f;
+    color: #fff;
+    border: none;
+    box-shadow: 0px 0px 3px rgba(229, 215, 215, 0.484) inset;
+    font-size: .2rem !important;
+}
+
+.main .contain .right form .control_login .login {
+    float: right;
+    color: #0b557a;
+    background-color: rgba(255, 255, 255, 0.671);
+    border: none;
+    font-size: .2rem !important;
+}
+
+.main .contain .right::after {
+    z-index: -1;
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(9, 44, 86, 0.4);
+    outline: none;
+    border: none;
+}
