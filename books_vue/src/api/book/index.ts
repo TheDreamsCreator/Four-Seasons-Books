@@ -1,11 +1,7 @@
 import { BASE_URL } from "../../config";
 import { BaseResponse, request } from "../../utils/request";
 
-export function getBookList(param?: {
-  bookname?: string;
-  author?: string;
-  publisher?: string;
-}) {
+export function getBookList(param?: API.QueryBookParam) {
   return request<BaseResponse<API.Result<API.BookData[]>>>({
     baseURL: BASE_URL,
     url: "getBookList",
@@ -14,8 +10,8 @@ export function getBookList(param?: {
   });
 }
 
-export function getBorrowList(param?: { user_id: string }) {
-  return request<BaseResponse<API.Result<void>>>({
+export function getBorrowList(param?: { user_id: number }) {
+  return request<BaseResponse<API.Result<API.BorrowDataSelf[]>>>({
     url: "getBorrowList",
     method: "get",
     params: param,
@@ -50,6 +46,22 @@ export function updateBookInfo(param: API.UpdateBookParam) {
     url: "updateBook",
     method: "post",
     data: param,
+  })
+}
+
+export function borrowBook(param: API.BookRentParam) {
+  return request<BaseResponse<API.Result<void>>>({
+    url: 'borrowBook',
+    method: 'post',
+    data: param
+  })
+}
+
+export function returnBook(param: API.BookRentParam) {
+  return request<BaseResponse<API.Result<void>>>({
+    url: 'updateBorrow',
+    method: 'put',
+    data: param
   })
 }
 

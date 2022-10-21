@@ -15,4 +15,6 @@ public class QueryBookDto extends PageDto {
   private String author;
 
   private String publisher;
+
+  private Integer isBorrow;
 }

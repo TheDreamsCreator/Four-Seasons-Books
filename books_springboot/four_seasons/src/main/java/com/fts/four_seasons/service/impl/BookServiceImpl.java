@@ -36,7 +36,6 @@ public class BookServiceImpl implements BookService {
     int offset = (dto.getPage() != null && limit != 0 && dto.getPage() > 0)
         ? dto.getLimit() * (dto.getPage() - 1)
         : 0;
-
     // there would be query all rows if limit and offset equals 0
     List<BookVo> result = bookMapper.listBooks(dto, limit, offset);
     return result;

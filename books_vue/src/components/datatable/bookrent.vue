@@ -2,32 +2,31 @@
   <n-space vertical :size="12">
     <n-data-table :bordered="false" :columns="columns" :data="data" :pagination="pagination" :row-key="rowKey"
       @update:checked-row-keys="handleCheck" :theme-overrides="{ borderRadius: '1rem' }" />
-    <n-button style="background-color: #f74d4e; --n-border: 0; margin-left: 10rem;width: 1.05rem;" type="info">借阅
-    </n-button>
+    <n-modal v-model:show="showConfirm" preset="dialog" title="借阅" content="您确认要借阅此书?" positive-text="确认"
+      negative-text="取消" @positive-click="submit" @negative-click="cancel" />
   </n-space>
 </template>
 
 <script setup lang="ts">
-import { DataTableColumns, DataTableRowKey } from 'naive-ui';
-import { reactive, ref } from 'vue';
-const bookData = ref<API.BookData[]>([
-  {
-    id: 0,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  },
-  {
-    id: 1,
-    isbn: 'string',
-    bookname: 'string',
-    author: 'string',
-    publisher: 'string',
-    type: 'string'
-  }
-] as API.BookData[])
+import { DataTableColumns, DataTableRowKey, NButton, useMessage } from 'naive-ui';
+import { h, onMounted, reactive, ref } from 'vue';
+import { borrowBook, getBookList } from '../../api/book';
+import { useUserStore } from '../../store/modules/user';
+
+const userStore = useUserStore();
+const $message = useMessage();
+const getBookData = async () => {
+  const { data } = await getBookList({
+    isBorrow: 0
+  })
+  bookData.value = data.data
+}
+onMounted(async () => {
+  await getBookData()
+})
+
+/* 数据表格 */
+const bookData = ref<API.BookData[]>([] as API.BookData[])
 const createColumns = (): DataTableColumns<API.BookData> => {
   return [
     {
@@ -55,10 +54,24 @@ const createColumns = (): DataTableColumns<API.BookData> => {
     {
       title: '类别',
       key: 'type'
+    },
+    {
+      title: '',
+      key: 'rent',
+      render(row) {
+        return h(
+          NButton,
+          {
+            onClick: () => rentBook(row)
+          },
+          {
+            default: () => '借阅'
+          }
+        )
+      }
     }
   ]
 }
-
 const createData = () => {
   return bookData
 }
@@ -80,12 +93,38 @@ const paginationReactive = reactive({
 const rowKey = (row: API.BookData) => row.id
 const handleCheck = (rowKeys: DataTableRowKey[]) => {
   checkedRowKeysRef.value = rowKeys
-  console.log(checkedRowKeysRef.value)
 }
-
 const data = ref(createData())
 const columns = ref(createColumns())
 const pagination = ref(paginationReactive)
+
+/* 借阅模态框 */
+const showConfirm = ref(false)
+const book_id = ref(0)
+const rentBook = (row: any) => {
+  showConfirm.value = true
+  book_id.value = row.id
+}
+const submit = async () => {
+  try {
+    const { data } = await borrowBook({
+      user_id: userStore.getUserInfo.id,
+      book_id: book_id.value,
+    })
+    if (data.status === 0) {
+      $message.success(data.message)
+    } else {
+      $message.error(data.message)
+    }
+    showConfirm.value = false
+    await getBookData()
+  } catch (e: any) {
+    $message.error(e.message)
+  }
+}
+const cancel = () => {
+  showConfirm.value = false
+}
 </script>
 
 <style scoped lang="less">

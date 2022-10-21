@@ -1,4 +1,3 @@
-import { BASE_URL } from "../../config";
 import { BaseResponse, request } from "../../utils/request";
 
 export function login(data: API.LoginParams) {

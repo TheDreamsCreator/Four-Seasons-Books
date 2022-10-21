@@ -61,13 +61,12 @@ import { toNumber } from 'lodash';
 const bookData = ref<API.BookData[]>([] as API.BookData[])
 const $message = useMessage()
 
+/* api 响应 */
 const getBookData = async () => {
   const { data } = await getBookList()
   bookData.value = data.data
 }
-
-onMounted(async () => {
-  await getBookData()
+const getTypeData = async () => {
   const res = await getTypeList()
   if (res.status == 1) {
     $message.error("获取类型列表失败!")
@@ -79,6 +78,12 @@ onMounted(async () => {
       label: e.type_name
     })
   })
+}
+
+/* vue页面初始化时加载 */
+onMounted(async () => {
+  await getBookData()
+  await getTypeData()
 })
 
 /* 搜索框 */
@@ -229,6 +234,8 @@ const updateBook = async () => {
   })
   if (data.status === 0) {
     $message.success(data.message)
+    await getBookData()
+    activeEdit.value = false
   } else {
     $message.error(data.message)
   }

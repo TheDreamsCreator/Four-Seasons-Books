@@ -2,6 +2,7 @@ package com.fts.four_seasons.service;
 
 import com.fts.four_seasons.model.dto.LoginDto;
 import com.fts.four_seasons.model.dto.RegisterDto;
+import com.fts.four_seasons.model.entity.User;
 
 public interface LoginService {
   /**
@@ -15,5 +16,5 @@ public interface LoginService {
    * 注册
    * @param dto
    */
-  void register(RegisterDto dto);
+  User register(RegisterDto dto);
 }

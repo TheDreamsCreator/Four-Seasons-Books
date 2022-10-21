@@ -31,24 +31,21 @@ public class BorrowServiceImpl implements BorrowService {
                 ? dto.getLimit() * (dto.getPage() - 1)
                 : 0;
         //如果limit和offset等于0，则查询所有行
-        System.out.println(limit+"/"+offset);
         return borrowMapper.listBorrow(dto, limit, offset);
     }
     //声明事务
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void addNewBorrow(BookBorrowDto bookBorrowDto) {
-        Borrow borrow = BeanCopyUtils.copyObject(bookBorrowDto, Borrow.class);
+    public void addNewBorrow(BookBorrowDto dto) {
+        Borrow borrow = BeanCopyUtils.copyObject(dto, Borrow.class);
         //获取当前系统时间
         Date date = new Date();
         //转换为数据库datetime格式
         Timestamp timestamp = new Timestamp(date.getTime());
         borrow.setBorrowTime(timestamp);
-        int result = borrowMapper.insert(borrow);
-        if (result == 0) {
-            throw new ApiException("添加借书记录失败");
-        }
+        borrowMapper.insert(borrow);
     }
+
     //声明事务
     @Transactional(rollbackFor = Exception.class)
     @Override

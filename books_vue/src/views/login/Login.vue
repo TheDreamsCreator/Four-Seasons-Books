@@ -3,7 +3,7 @@
   <body>
     <div class="main">
       <div class="contain">
-        <div class="left">
+        <div class="left">  
           <p>请登录</p>
           <ul>
             <li>没有账号？</li>
@@ -15,11 +15,11 @@
             <p class="label">Sign Up</p>
             <ul>
               账号:<input v-model="state.form.account" id="username"/>
-              <span id="msg1">*请输入7位以上的账号</span>
+              <!-- <span id="msg1">*请输入7位以上的账号</span> -->
             </ul>
             <ul>
               密码:<input type="password" v-model="state.form.password" id="password" />
-              <span class="spanT" id="msg2">*请输入包含数字、字母和特殊字符的密码</span>
+              <!-- <span class="spanT" id="msg2">*请输入包含数字、字母和特殊字符的密码</span> -->
             </ul>
             <p class="control_login">
               <a id="reg" class="control" href="/register">注 册</a>
