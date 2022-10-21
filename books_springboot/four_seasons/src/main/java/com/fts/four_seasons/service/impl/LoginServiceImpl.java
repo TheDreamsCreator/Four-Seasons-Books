@@ -54,7 +54,7 @@ public class LoginServiceImpl implements LoginService {
   }
 
   @Override
-  public void register(RegisterDto dto) {
+  public User register(RegisterDto dto) {
     User user = (User) userMapper.selectOne(
         new LambdaQueryWrapper<User>()
             .select()
@@ -77,6 +77,7 @@ public class LoginServiceImpl implements LoginService {
     if (result == 0) {
       throw new ApiException("注册失败");
     }
+    return newUser;
   }
 
 }

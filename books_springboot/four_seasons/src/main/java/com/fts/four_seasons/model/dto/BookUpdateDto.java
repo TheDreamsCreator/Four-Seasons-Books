@@ -21,7 +21,6 @@ public class BookUpdateDto {
   private String author;
   @NotBlank(message = "出版社不能为空")
   private String publisher;
-  @NotBlank(message = "isbn不能为空")
   private String isbn;
   private Integer type;
   private Integer isBorrow;

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.fts.four_seasons.annotation.ApiRestController;
 import com.fts.four_seasons.model.dto.LoginDto;
 import com.fts.four_seasons.model.dto.RegisterDto;
+import com.fts.four_seasons.model.entity.User;
 import com.fts.four_seasons.model.vo.Result;
 import com.fts.four_seasons.service.LoginService;
 
@@ -33,7 +34,7 @@ public class AuthController {
 
   @PostMapping("register")
   @ApiOperation(value = "注册")
-  public Result<?> register(@RequestBody RegisterDto dto) {
+  public Result<User> register(@RequestBody @Valid RegisterDto dto) {
     loginService.register(dto);
     return Result.success("注册成功", null);
   }
