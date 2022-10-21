@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fts.four_seasons.mapper.BorrowMapper">
+    <resultMap id="borrowResultMap" type="com.fts.four_seasons.model.entity.Borrow">
+        <id column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result column="bookId" property="bookId"/>
+        <result column="borrowTime" property="borrowTime"/>
+        <result column="returnTime" property="returnTime"/>
+    </resultMap>
+
+    <resultMap id="borrowList" type="com.fts.four_seasons.model.vo.BorrowVo">
+        <id column="id" property="id"/>
+        <result column="bookId" property="bookId"/>
+        <result column="bookName" property="bookName"/>
+        <result column="bookIsbn" property="bookIsbn"/>
+        <result column="bookAuthor" property="bookAuthor"/>
+        <result column="bookPublisher" property="bookPublisher"/>
+        <result column="typeName" property="typeName"/>
+        <result column="borrowTime" property="borrowTime"/>
+    </resultMap>
+
+    <select id="listBorrow" resultMap="borrowList">
+        SELECT
+            br.id,
+            br.book_id as bookId,
+            b.name AS bookName,
+            b.isbn AS bookIsbn,
+            b.author AS bookAuthor,
+            t.name as typeName,
+            b.publisher as bookPublisher,
+            br.borrow_time as borrowTime
+        FROM
+            (
+                SELECT
+                id,
+                user_id,
+                book_id,
+                borrow_time,
+                return_time
+                FROM
+                    borrow
+                WHERE
+                    user_id = #{condition.userId}
+            ) AS br
+        JOIN book AS b ON br.book_id = b.id
+        JOIN type AS t ON b.type = t.id
+        <if test="limit != 0">
+            LIMIT #{limit}
+        </if>
+        <if test="offset != 0">
+            OFFSET #{offset}
+        </if>
+    </select>
+
+</mapper>

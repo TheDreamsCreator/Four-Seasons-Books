@@ -13,8 +13,11 @@ import java.util.Date;
 @Builder
 public class BorrowVo {
     private Integer id;
-    private Integer userId;
     private Integer bookId;
+    private String bookName;
+    private String bookIsbn;
+    private String bookAuthor;
+    private String bookPublisher;
+    private String typeName;
     private Date borrowTime;
-    private Date returnTime;
 }
