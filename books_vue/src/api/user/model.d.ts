@@ -14,6 +14,7 @@ declare namespace API {
   }
 
   type UserInfoUpdateParams = {
+    id: number
     account: string
     nickname: string
     old_password: string

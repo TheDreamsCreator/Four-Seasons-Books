@@ -98,6 +98,7 @@ import { useUserStore } from '../../store/modules/user';
 
 const userStore = useUserStore()
 const $message = useMessage()
+const id = ref(0)
 const nickname = ref("")
 const account = ref("")
 const oldPassword = ref("")
@@ -106,6 +107,7 @@ const newPassword = ref("")
 onMounted(() => {
   nickname.value = userStore.getUserInfo.nickname ?? ''
   account.value = userStore.getUserInfo.account ?? ''
+  id.value = userStore.getUserInfo.id
 })
 
 const logout = () => {
@@ -118,6 +120,7 @@ const logout = () => {
 }
 const update = async () => {
   const res = await userStore.updateUserInfo({
+    id: id.value,
     account: account.value,
     nickname: nickname.value,
     old_password: oldPassword.value,
