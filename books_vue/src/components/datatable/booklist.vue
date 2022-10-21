@@ -30,17 +30,17 @@ const bookname = ref('')
 const author = ref('')
 const publisher = ref('')
 const search = async () => {
-  const res = await getBookList({
+  const { data } = await getBookList({
     bookname: bookname.value,
     author: author.value,
     publisher: publisher.value
   })
-  if (res.status == 0) {
-    bookData.value = res.data.data
-    $message.success(res.message)
+  if (data.status == 0) {
+    bookData.value = data.data
+    $message.success(data.message)
   }
-  if (res.status == 1) {
-    $message.error(res.message)
+  if (data.status == 1) {
+    $message.error(data.message)
   }
 }
 
