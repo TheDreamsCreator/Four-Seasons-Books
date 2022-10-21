@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 借阅表实体类
  */
@@ -27,7 +29,9 @@ public class Borrow implements Serializable {
 
   private Integer bookId;
 
+@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private Date borrowTime;
 
+  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private Date returnTime;
 }
