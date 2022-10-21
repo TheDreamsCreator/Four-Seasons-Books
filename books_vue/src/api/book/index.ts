@@ -10,7 +10,7 @@ export function getBookList(param?: API.QueryBookParam) {
   });
 }
 
-export function getBorrowList(param?: { user_id: number }) {
+export function getBorrowList(param?: { userId: number }) {
   return request<BaseResponse<API.Result<API.BorrowDataSelf[]>>>({
     url: "getBorrowList",
     method: "get",
@@ -57,7 +57,7 @@ export function borrowBook(param: API.BookRentParam) {
   })
 }
 
-export function returnBook(param: API.BookRentParam) {
+export function returnBook(param: API.BookReturnParam) {
   return request<BaseResponse<API.Result<void>>>({
     url: 'updateBorrow',
     method: 'put',

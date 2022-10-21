@@ -62,7 +62,7 @@ declare namespace API {
   }
 
   type BookReturnParam = {
-    user_id: number;
+    id: number;
     book_id: number;
   }
 }

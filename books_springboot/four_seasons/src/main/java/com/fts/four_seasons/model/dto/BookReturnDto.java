@@ -12,9 +12,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Builder
 public class BookReturnDto {
-    @NotNull(message = "借书用户不能为空")
-    private Integer userId;
-    @NotNull(message = "所借图书id不能为空")
-    private Integer bookId;
+    @NotNull(message = "借书id不能为空")
+    private Integer id;
+    @NotNull(message = "图书id不能为空")
+    private Integer book_id;
 }
 

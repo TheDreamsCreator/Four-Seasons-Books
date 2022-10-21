@@ -17,7 +17,7 @@ const $message = useMessage();
 
 const getBorrowBook = async () => {
   const { data } = await getBorrowList({
-    user_id: userStore.getUserInfo.id
+    userId: userStore.getUserInfo.id
   })
   if (data.status === 1) {
     $message.error(data.message)
@@ -111,16 +111,18 @@ const pagination = ref(paginationReactive)
 
 /* 归还模态框 */
 const showConfirm = ref(false)
+const borrow_id = ref(0)
 const book_id = ref(0)
 const bookReturn = (row: any) => {
   showConfirm.value = true
+  borrow_id.value = row.id
   book_id.value = row.book_id
 }
 const submit = async () => {
   try {
     const { data } = await returnBook({
-      user_id: userStore.getUserInfo.id,
-      book_id: book_id.value,
+      id: borrow_id.value,
+      book_id: book_id.value
     })
     if (data.status === 0) {
       $message.success(data.message)

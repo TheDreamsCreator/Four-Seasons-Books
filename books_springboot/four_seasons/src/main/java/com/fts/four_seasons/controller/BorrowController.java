@@ -12,6 +12,10 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,26 +25,27 @@ import java.util.List;
 public class BorrowController {
 
     @Autowired()
-    private BorrowService BorrowService;
+    private BorrowService borrowService;
 
     @GetMapping("getBorrowList")
     @ApiOperation(value = "分页条件查询借书记录列表")
     public Result<List<BorrowVo>> borrowList(QueryBorrowDto dto) {
-        List<BorrowVo> data = BorrowService.listBorrow(dto);
+        System.out.println(dto.getUserId());
+        List<BorrowVo> data = borrowService.listBorrow(dto);
         return Result.success("获取借书记录成功!", data);
     }
 
-    @GetMapping("borrowBook")
+    @PostMapping("borrowBook")
     @ApiOperation(value = "用户进行借书操作，增加借书记录")
-    public Result<List<BorrowVo>> borrowBook(BookBorrowDto dto) {
-        BorrowService.addNewBorrow(dto);
+    public Result<List<BorrowVo>> borrowBook(@RequestBody BookBorrowDto dto) {
+        borrowService.addNewBorrow(dto);
         return Result.success("借书成功!", null);
     }
 
-    @GetMapping("updateBorrow")
+    @PutMapping("updateBorrow")
     @ApiOperation(value = "归还图书，更新借书记录归还日期")
-    public Result<List<BorrowVo>> returnBook(BookReturnDto dto) {
-        BorrowService.returnBook(dto);
+    public Result<List<BorrowVo>> returnBook(@RequestBody BookReturnDto dto) {
+        borrowService.returnBook(dto);
         return Result.success("归还成功!", null);
     }
 

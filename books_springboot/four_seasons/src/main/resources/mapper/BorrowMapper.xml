@@ -42,6 +42,7 @@
                     borrow
                 WHERE
                     user_id = #{condition.userId}
+                AND return_time is null
             ) AS br
         JOIN book AS b ON br.book_id = b.id
         JOIN type AS t ON b.type = t.id

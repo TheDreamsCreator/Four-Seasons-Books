@@ -1,10 +1,12 @@
 package com.fts.four_seasons.service.impl;
 
 import com.fts.four_seasons.exception.ApiException;
+import com.fts.four_seasons.mapper.BookMapper;
 import com.fts.four_seasons.mapper.BorrowMapper;
 import com.fts.four_seasons.model.dto.BookBorrowDto;
 import com.fts.four_seasons.model.dto.BookReturnDto;
 import com.fts.four_seasons.model.dto.QueryBorrowDto;
+import com.fts.four_seasons.model.entity.Book;
 import com.fts.four_seasons.model.entity.Borrow;
 import com.fts.four_seasons.model.vo.BorrowVo;
 import com.fts.four_seasons.service.BorrowService;
@@ -21,6 +23,9 @@ import java.util.List;
 public class BorrowServiceImpl implements BorrowService {
     @Autowired
     private BorrowMapper borrowMapper;
+
+    @Autowired
+    private BookMapper bookMapper;
 
     @Override
     public List<BorrowVo> listBorrow(QueryBorrowDto dto) {
@@ -43,7 +48,11 @@ public class BorrowServiceImpl implements BorrowService {
         //转换为数据库datetime格式
         Timestamp timestamp = new Timestamp(date.getTime());
         borrow.setBorrowTime(timestamp);
-        borrowMapper.insert(borrow);
+        int result = borrowMapper.insert(borrow);
+        int res = bookMapper.updateById(Book.builder().id(dto.getBookId()).isBorrow(1).build());
+        if (result == 0 || res == 0) {
+            throw new ApiException("添加借书记录失败");
+        }
     }
 
     //声明事务
@@ -57,7 +66,8 @@ public class BorrowServiceImpl implements BorrowService {
         Timestamp timestamp = new Timestamp(date.getTime());
         borrow.setReturnTime(timestamp);
         int result = borrowMapper.updateById(borrow);
-        if (result == 0) {
+        int res = bookMapper.updateById(Book.builder().id(bookReturnDto.getBook_id()).isBorrow(0).build());
+        if (result == 0 || res == 0) {
             throw new ApiException("更新借书记录失败");
         }
     }

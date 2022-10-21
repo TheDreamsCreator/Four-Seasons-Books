@@ -1,9 +1,9 @@
 spring:
   datasource: 
-    url: jdbc:mysql://localhost:3306/db_book_manager?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://175.178.238.125:13306/the_four_seasons_of_books?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
+    password: jgh
   jackson: 
     date-format: yyyy-MM-dd HH:mm:ss
     property-naming-strategy: SNAKE_CASE
