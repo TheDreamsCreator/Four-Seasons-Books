@@ -11,5 +11,4 @@ public class FourSeasonsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FourSeasonsApplication.class, args);
 	}
-
 }

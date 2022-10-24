@@ -16,8 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 @Service("BorrowService")
 public class BorrowServiceImpl implements BorrowService {
@@ -62,6 +64,7 @@ public class BorrowServiceImpl implements BorrowService {
         Borrow borrow = BeanCopyUtils.copyObject(bookReturnDto, Borrow.class);
         //获取当前系统时间
         Date date = new Date();
+        System.out.println("时间："+date);
         //转换为数据库datetime格式
         Timestamp timestamp = new Timestamp(date.getTime());
         borrow.setReturnTime(timestamp);

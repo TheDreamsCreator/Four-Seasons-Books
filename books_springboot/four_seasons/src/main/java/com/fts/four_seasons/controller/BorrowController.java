@@ -30,8 +30,9 @@ public class BorrowController {
     @GetMapping("getBorrowList")
     @ApiOperation(value = "分页条件查询借书记录列表")
     public Result<List<BorrowVo>> borrowList(QueryBorrowDto dto) {
-        System.out.println(dto.getUserId());
+        //System.out.println(dto.getUserId());
         List<BorrowVo> data = borrowService.listBorrow(dto);
+        System.out.println(data);
         return Result.success("获取借书记录成功!", data);
     }
 
