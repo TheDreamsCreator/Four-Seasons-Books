@@ -22,6 +22,6 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX	 ░█    ░██░██ 
   |XXX|       \XXX/^^\XXXXX/^^\XXX/       |XXX|  			
     \XX\       \X/    \XXX/    \X/       /XX/    				
        "\       "      \X/      "       /"       			
-                        !                                            ${AnsiColor.GREEN}SpringBoot          
-                                                                                ${AnsiColor.BLUE} v${spring-boot.version} ${AnsiColor.DEFAULT}
+                        !                                         ${AnsiColor.GREEN}::SpringBoot:: ${AnsiColor.BLUE} ${spring-boot.formatted-version}
+                                                                  ${AnsiColor.BRIGHT_WHITE}${application.title}::Version::      ${AnsiColor.BLUE}(v1.0.0-rc1)${AnsiColor.DEFAULT}
 -^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-
