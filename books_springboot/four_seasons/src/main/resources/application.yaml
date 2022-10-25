@@ -11,6 +11,10 @@ spring:
   mvc: 
     pathmatch:
       matching-strategy: ant-path-matcher
+  banner:
+    charset: utf-8
+    image:
+      location: banner.txt
 logging:
   file:
     name: log/app.log
