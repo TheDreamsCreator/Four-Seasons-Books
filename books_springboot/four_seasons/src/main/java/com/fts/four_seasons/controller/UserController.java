@@ -14,6 +14,8 @@ import com.fts.four_seasons.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.validation.Valid;
+
 @Api(tags = "用户接口")
 @ApiRestController("")
 @Validated
@@ -24,7 +26,7 @@ public class UserController {
 
   @PutMapping("userInfo")
   @ApiOperation(value = "修改用户信息")
-  public Result<UserVo> updateUserInfo(@RequestBody UserUpdateDto dto) {
+  public Result<UserVo> updateUserInfo(@Valid @RequestBody UserUpdateDto dto) {
     UserVo updatedInfo = userService.updateUserInfo(dto);
     return Result.success("用户信息更新成功", updatedInfo);
   }
