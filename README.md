@@ -18,7 +18,16 @@ test: Adding missing tests
 ```
 
 #### 介绍
-四季图书后端
+四季图书
+前端VUE+后端SpringBoot整合
+
+#### 启动
+
+后端
+检查application.yml配置文件数据库连接参数设置，运行SpringBoot启动类
+
+前端
+clone项目文件到IDE中，在Vue模块文件夹下打开控制台终端，确保已安装NodeJS等相关组件，输入npm run dev即可启动
 
 #### 软件架构
 Basic Once Http Request Handle Processor:
